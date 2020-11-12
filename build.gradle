@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation("com.google.guava:guava:30.0-jre")
+
+    compile 'org.mongodb:mongodb-driver:3.3.0'
+    compile 'org.hibernate.ogm:hibernate-ogm-mongodb:5.4.0.Final'
+    compile 'org.jboss.narayana.jta:narayana-jta:5.9.2.Final'
+}
+
+repositories {
+    mavenCentral()
+}
