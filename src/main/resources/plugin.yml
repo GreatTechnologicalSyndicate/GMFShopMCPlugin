@@ -1,0 +1,9 @@
+name: GMF_Shop_Plugin
+version: 1.0.0-pre-alpha
+author: GMF MC Dev Team
+main: com.gmf.mc.shop.main.ShopPlugin
+api-version: 1.16.3
+commands:
+  shelp:
+    description: get shop help info
+    usage: /shelp

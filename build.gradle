@@ -8,11 +8,19 @@ version '1.0-SNAPSHOT'
 dependencies {
     implementation("com.google.guava:guava:30.0-jre")
 
-    compile 'org.mongodb:mongodb-driver:3.3.0'
-    compile 'org.hibernate.ogm:hibernate-ogm-mongodb:5.4.0.Final'
-    compile 'org.jboss.narayana.jta:narayana-jta:5.9.2.Final'
+    implementation 'org.mongodb:mongodb-driver:3.3.0'
+    implementation 'org.hibernate.ogm:hibernate-ogm-mongodb:5.4.0.Final'
+    implementation 'org.jboss.narayana.jta:narayana-jta:5.9.2.Final'
+
+    compileOnly 'org.spigotmc:spigot-api:1.16.3-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+    //compileOnly 'org.bukkit:bukkit:1.16.3-R0.1-SNAPSHOT' // The Bukkit API with no shadowing.
+    //compileOnly 'org.spigotmc:spigot:1.16.3.-R0.1-SNAPSHOT' // The full Spigot server with no shadowing. Requires mavenLocal.
+    //compileOnly 'org.bukkit:craftbukkit:1.16.3-R0.1-SNAPSHOT' // The full CraftBukkit server with no shadowing. Requires mavenLocal.
 }
 
 repositories {
     mavenCentral()
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+
 }
