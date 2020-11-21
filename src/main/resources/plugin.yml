@@ -7,3 +7,12 @@ commands:
   shelp:
     description: get shop help info
     usage: /shelp
+  sget:
+    description: get your money count
+    usage: /sget
+  sset:
+    description: set money for player
+    usage: /sset
+  spay:
+    description: pay money for player
+    usage: /spay
