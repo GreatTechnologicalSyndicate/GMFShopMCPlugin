@@ -4,10 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum MoneyEventType {
+    BALANCE("balance"),
     PAY("pay"),
-    SET("set"),
-    GET("get");
-    private String name;
+    RATING("rating");
+    private final String name;
     MoneyEventType(String name){
         this.name = name;
     }

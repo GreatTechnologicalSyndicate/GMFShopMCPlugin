@@ -4,7 +4,6 @@ plugins {
 
 group = 'com.gmf.mc.shop'
 version = '0.0.1-PRE-ALPHA'
-sourceCompatibility = '1.8'
 
 configurations {
     compileOnly {
@@ -23,6 +22,15 @@ repositories {
 
 dependencies {
     implementation 'org.spigotmc:spigot-api:1.16.3-R0.1-SNAPSHOT'
+    implementation group: 'com.sun.jersey', name: 'jersey-client', version: '1.18.1'
+    implementation group: 'com.sun.jersey', name: 'jersey-json', version: '1.18.1'
+    compile "javax.mail:javax.mail-api:1.5.2"
+    compile "javax.xml.bind:jaxb-api:2.3.0"
+    compile "javax.activation:activation:1.1"
+    compile "com.sun.xml.bind:jaxb-impl:2.3.0"
+    compile "com.sun.xml.bind:jaxb-core:2.3.0"
+    compile "com.sun.xml.ws:rt:2.3.0"
+    compile "com.sun.xml.ws:jaxws-rt:2.3.0"
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
 
@@ -30,7 +38,11 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
 }
-
+jar{
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
 test {
     useJUnitPlatform()
 }
