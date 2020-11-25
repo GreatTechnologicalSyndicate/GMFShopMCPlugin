@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.spigotmc:spigot-api:1.16.3-R0.1-SNAPSHOT'
     implementation group: 'com.sun.jersey', name: 'jersey-client', version: '1.18.1'
     implementation group: 'com.sun.jersey', name: 'jersey-json', version: '1.18.1'
+    implementation("com.google.guava:guava:30.0-jre")
     compile "javax.mail:javax.mail-api:1.5.2"
     compile "javax.xml.bind:jaxb-api:2.3.0"
     compile "javax.activation:activation:1.1"

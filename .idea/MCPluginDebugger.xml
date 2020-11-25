@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MCPluginDebuggerConfig">
+    <option name="serverJarFile" value="C:\Users\matro\Documents\GMFShopMCPlugin\server\paper-279.jar" />
+    <option name="pluginJarFile" value="C:\Users\matro\Documents\GMFShopMCPlugin\build\libs\GMFShopMCPlugin-0.0.1-PRE-ALPHA.jar" />
+    <option name="pluginName" value="GMF_Shop_Plugin" />
+    <option name="host" value="localhost" />
+    <option name="port" value="9000" />
+  </component>
+</project>

@@ -1,6 +1,7 @@
 package com.gmf.mc.shop.listener;
 
 import com.gmf.mc.shop.event.MoneyEvent;
+import com.gmf.mc.shop.manager.MoneyEventManager;
 import com.gmf.mc.shop.model.MoneyModels;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -19,28 +20,26 @@ import java.lang.reflect.InvocationHandler;
 
 public class MoneyEventListener implements Listener {
     Logger logger = LoggerFactory.getLogger(MoneyEventListener.class);
-    private final WebResource webResource;
 
-    public MoneyEventListener(String uri) {
-        ClientConfig clientConfig = new DefaultClientConfig();
-        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-        Client client = Client.create(clientConfig);
-        webResource = client.resource(uri);
+    public MoneyEventListener() {
+
     }
 
     @EventHandler
     public void onMoneyOperation(MoneyEvent event) {
         logger.info(event.getEventType().getName());
-        switch (event.getEventType()) {
-            case PAY -> event.getSender().sendMessage(webResource.path("pay")
-                    .post(String.class, new MoneyModels.Pay(event.getSender().getName(),
-                                                event.getArgs()[0],
-                                                Double.parseDouble(event.getArgs()[1])).toString()));
-            case BALANCE -> event.getSender().sendMessage(webResource.path("balance")
-                    .post(String.class, new MoneyModels.Balance(event.getSender().getName()).toString()));
-            case RATING -> event.getSender().sendMessage(webResource.path("rating")
-                    .post(String.class, ""));
-        }
+        MoneyEventManager.getInstance().execute(event);
+        /**switch (event.getEventType()) {
+        **    case PAY -> event.getSender().sendMessage(webResource.path("pay")
+        **            .post(String.class, new MoneyModels.Pay(event.getSender().getName(),
+        **                                        event.getArgs()[0],
+        **                                        Double.parseDouble(event.getArgs()[1])).toString()));
+        **    case BALANCE -> event.getSender().sendMessage(webResource.path("balance")
+        **            .post(String.class, new MoneyModels.Balance(event.getSender().getName()).toString()));
+        **    case RATING -> event.getSender().sendMessage(webResource.path("rating")
+        **            .post(String.class, ""));
+        **}
+        * */
     }
 
     @EventHandler
